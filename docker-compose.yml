@@ -1,0 +1,15 @@
+version: '3.9'
+name: block-list
+services:
+  db:
+    image: postgres:alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER={$POSTGRES_USER}
+      - POSTGRES_PASSWORD={$POSTGRES_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - block-list-db:/var/lib/postgresql/data
+volumes:
+  block-list-db:
